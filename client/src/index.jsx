@@ -20,6 +20,7 @@ class App extends React.Component {
     console.log(`${term} was searched`);
     var newTerm = {searchTerm: term};
     // TODO
+    //POST request to /repos
     $.ajax({
       method: 'POST',
       url: '/repos',
@@ -27,7 +28,7 @@ class App extends React.Component {
       contentType: "application/json",
       data: newTerm,
       success: (data) =>{
-        console.log("success with data");
+        console.log("success");
       },
       error: (data) => {
         console.log("error");

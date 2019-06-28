@@ -1,11 +1,21 @@
+//DATABASE MODEL
 const mongoose = require('mongoose');
+// open a connection to the fetcher database
+//connect mongoose to mongodb
 mongoose.connect('mongodb://localhost/fetcher');
 
+//define a schema named "repoSchema"
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
+  fullName: String, //"octocat/git-consortium"
+  repoURL: String,
+  id: Number,
+  forkCount: Number
 });
 
+//compiling our schema into a Model named "Repo".
 let Repo = mongoose.model('Repo', repoSchema);
+
 
 let save = (/* TODO */) => {
   // TODO: Your code here

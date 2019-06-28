@@ -18,22 +18,20 @@ class App extends React.Component {
   //the data (github repos) will be the search term
   search (term) {
     console.log(`${term} was searched`);
-    var newTerm = {searchTerm: term};
+    var newTerm = {user: term};
     // TODO
-    //POST request to /repos
     $.ajax({
       method: 'POST',
       url: '/repos',
       data: JSON.stringify(newTerm),
-      contentType: "application/json",
-      data: newTerm,
-      success: (data) =>{
+      contentType: 'application/json',
+      success: (success) =>{
         console.log("success");
       },
-      error: (data) => {
+      error: (error) => {
         console.log("error");
       }
-    })
+    });
   }
 
   render () {

@@ -27,8 +27,7 @@ class App extends React.Component {
       contentType: "application/json",
       data: newTerm,
       success: (data) =>{
-
-        console.log("success");
+        console.log("success with data");
       },
       error: (data) => {
         console.log("error");

@@ -15,7 +15,7 @@ let getReposByUsername = (user, callback) => { //takes in a cb
 
   request(options, (error, response, body) => {
     if(error) {
-      console.error("error", error);
+      console.error("error: ", error);
     }else {
       //get only certain values from api data
       var gitData = JSON.parse(body);
@@ -28,7 +28,7 @@ let getReposByUsername = (user, callback) => { //takes in a cb
           url: gitData[i].html_url
         });
       }
-      console.log(gitArray);
+      //console.log("help: ", gitArray);
       callback(null, gitArray);
     }
   });

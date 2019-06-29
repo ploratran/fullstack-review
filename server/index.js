@@ -12,10 +12,15 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos', function (req, res) {
   var githubUser = req.body.user;
-  //console.log(githubUser);
+  //console.log("user", githubUser);
 
   helper.getReposByUsername(githubUser, (err, repoData) => {
     console.log('do post request here');
+    if(err) {
+      console.log("error", err);
+    }else {
+      db.save(repoData);
+    }
   })
   // TODO - your code here!
   // This route should take the github username provided

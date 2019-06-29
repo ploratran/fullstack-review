@@ -15,10 +15,10 @@ db.once('open', function() {
 //define a schema named "repoSchema"
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
-  id: Number, //unique id
-  // userName: String, //'ploratran'
-  fullName: String, //name of repo url
-  forkCount: Number //num of fork count
+  id_: Number,
+  owner: String,
+  size: Number,
+  url: String
 });
 
 
@@ -27,6 +27,17 @@ let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (repos) => {
   // This function should save a repo or repos to the MongoDB
+  //create new document instances from model Repo
+  console.log(repos.length);
+  for(var i = 0; i < repos.length; i++){
+    var newRepos = new Repo({
+      id_ : repos[i].id_,
+      owner: repos[i].owner,
+      size: repos[i].size,
+      url: repos[i].url
+    });
+  }
+  console.log('docs: ', newRepos._doc);
 
 }
 

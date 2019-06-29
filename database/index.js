@@ -11,7 +11,7 @@ db.once('open', function() {
   console.log("we're connected!");
 });
 
-const getRepos = require('../helpers/github.js');
+//const getRepos = require('../helpers/github.js');
 
 //define a schema named "repoSchema"
 let repoSchema = mongoose.Schema({

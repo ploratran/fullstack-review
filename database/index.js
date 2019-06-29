@@ -1,8 +1,10 @@
 //DATABASE MODEL
 const mongoose = require('mongoose');
+
 // open a connection to the fetcher database
-//connect mongoose to mongodb
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/fetcher'); //connect mongoose to server
+
+const getRepos = require('../helpers/github.js');
 
 //define a schema named "repoSchema"
 let repoSchema = mongoose.Schema({
@@ -19,9 +21,8 @@ let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (/* TODO */) => {
   // TODO: Your code here
-  // This function should save a repo or repos to
-  // the MongoDB
-  //
+  // This function should save a repo or repos to the MongoDB
+
 }
 
 module.exports.save = save;

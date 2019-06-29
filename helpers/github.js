@@ -18,13 +18,16 @@ let getReposByUsername = (user) => {
 
   function callback (error, response, body) {
     if(!error && response.statusCode == 200){
-      let repos = JSON.parse(body);
-      console.log('print: ', repos);
+      let github = JSON.parse(body);
+      //console.log('user github ', repos);
+      for(var i = 0; i < github.length; i++){
+        console.log(github[i].full_name, 'repos');
+      }
     }
   }
 
   //read: https://github.com/request/request
-  request(options,callback);
+  request.get(options,callback);
 }
 
 module.exports.getReposByUsername = getReposByUsername;

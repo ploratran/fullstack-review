@@ -16,9 +16,9 @@ let getReposByUsername = (user, callback) => { //takes in a cb
   //read: https://github.com/request/request
   request.get(options,(error, response, body) => {
     if(error) {
-      console.log('error', error);
+      callback(error, null)
     }else{
-      callback(body);
+      callback(body); //don't use cb(null, body) here
     }
   });
   // function callback (error, response, body) {
@@ -29,6 +29,6 @@ let getReposByUsername = (user, callback) => { //takes in a cb
   //     }
   //   }
   // }
-  //request.get(options, (error, response, body) {});
+  // request.get(options, callback);
 }
 module.exports.getReposByUsername = getReposByUsername;

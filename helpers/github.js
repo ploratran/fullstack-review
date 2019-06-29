@@ -13,22 +13,24 @@ let getReposByUsername = (user, callback) => { //takes in a cb
     }
   };
 
-  //read: https://github.com/request/request
-  request.get(options,(error, response, body) => {
+  request(options, (error, response, body) => {
     if(error) {
-      callback(error, null)
-    }else{
-      callback(body); //don't use cb(null, body) here
+      console.error("error", error);
+    }else {
+      //get only certain values from api data
+      var gitData = JSON.parse(body);
+      var gitArray = [];
+      for(var i = 0; i < gitData.length; i++){
+        gitArray.push({
+          id_: gitData[i].id,
+          owner: gitData[i].owner.login,
+          size: gitData[i].size,
+          url: gitData[i].html_url
+        });
+      }
+      console.log(gitArray);
+      callback(null, gitArray);
     }
   });
-  // function callback (error, response, body) {
-  //   if(!error && response.statusCode == 200){
-  //     let github = JSON.parse(body);
-  //     for(var i = 0; i < github.length; i++){
-  //       console.log(github[i].full_name); //ploratran/ToyProblemsJS
-  //     }
-  //   }
-  // }
-  // request.get(options, callback);
 }
 module.exports.getReposByUsername = getReposByUsername;

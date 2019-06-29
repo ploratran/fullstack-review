@@ -1,5 +1,5 @@
 const express = require('express');
-const getRepos = require('../helpers/github.js');
+const helper = require('../helpers/github.js');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 let app = express();
@@ -12,24 +12,17 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos', function (req, res) {
   var githubUser = req.body.user;
+  //console.log(githubUser);
+
+  helper.getReposByUsername(githubUser, (err, repoData) => {
+    console.log('do post request here');
+  })
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API,
 
-  getRepos.getReposByUsername(githubUser, function(data){
 
-    let githubData = JSON.parse(data);
 
-    db.saveRepos(githubData);
-    for(var i = 0; i < githubData.length; i++){
-      //console.log("data from api: ", githubData[i]);
-      db.saveRepos(githubData[i]);
-    }
-  });
-  // save the repo information in the database
-  // get data from client and insert to database
-
-  res.end();
 });
 
 app.get('/repos', function (req, res) {
@@ -46,4 +39,3 @@ let port = 1128;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
-

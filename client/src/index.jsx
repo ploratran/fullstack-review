@@ -14,6 +14,10 @@ class App extends React.Component {
     this.search = this.search.bind(this);
   }
 
+  componentDidMount(){
+
+  }
+
   //do GET and POST request here in order to get data from server
   //the data (github repos) will be the search term
   search (term) {

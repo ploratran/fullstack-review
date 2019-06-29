@@ -1,8 +1,15 @@
 //DATABASE MODEL
 const mongoose = require('mongoose');
 
-// open a connection to the fetcher database
+// open a connection to mongodb fetcher database
 mongoose.connect('mongodb://localhost/fetcher'); //connect mongoose to server
+
+//get notified if we connect successfully or if a connection error occurs:
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we're connected!");
+});
 
 const getRepos = require('../helpers/github.js');
 
@@ -26,3 +33,4 @@ let save = (/* TODO */) => {
 }
 
 module.exports.save = save;
+// module.exports.db = db; //test if mongodb connected to mongoose

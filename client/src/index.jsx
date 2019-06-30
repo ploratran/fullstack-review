@@ -14,10 +14,6 @@ class App extends React.Component {
     this.search = this.search.bind(this);
   }
 
-  componentDidMount(){
-
-  }
-
   //do GET and POST request here in order to get data from server
   //the data (github repos) will be the search term
   search (term) {
@@ -26,10 +22,12 @@ class App extends React.Component {
     // TODO
     $.ajax({
       method: 'POST',
-      url: '/repos',
+      url: 'http://localhost:1128/repos',
+      // url: 'http://127.0.0.1:1128/repos',
       data: JSON.stringify(newTerm),
       contentType: 'application/json',
-      success: () =>{
+
+      success: () => {
         console.log("success");
       },
       error: () => {

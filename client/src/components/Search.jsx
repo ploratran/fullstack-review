@@ -11,14 +11,12 @@ class Search extends React.Component {
   }
 
   handleOnChange (e) {
-    console.log('user input term: ', e.target.value);
     this.setState({
       term: e.target.value
     });
   }
 
   search() {
-    console.log('add button clicked: ', this.state.term);
     this.props.handleOnSearch(this.state.term);
   }
 

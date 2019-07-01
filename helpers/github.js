@@ -23,7 +23,6 @@ let getReposByUsername = (user, callbackExecute) => {
           url: gitData[i].html_url
         });
       }
-      console.log("helper function called: ", gitArray);
       callbackExecute(null, gitArray);
     }
   }

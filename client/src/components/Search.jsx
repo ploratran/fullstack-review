@@ -10,13 +10,14 @@ class Search extends React.Component {
     this.search = this.search.bind(this);
   }
 
-  handleOnChange (e) {
+  handleOnChange(e) {
     this.setState({
       term: e.target.value
     });
   }
 
-  search() {
+  search(e) {
+    e.preventDefault();
     this.props.handleOnSearch(this.state.term);
   }
 

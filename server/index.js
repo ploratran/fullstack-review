@@ -31,13 +31,11 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
-  // get data from database and send back to client
-  //db.find()
+  var githubUser = req.query.userid;
+  //console.log('print: ', req.query);
+    //db.findReposGt20000(res.json);
+    db.findReposGt20000(githubUser, res);
 
-
-  res.end()
 });
 
 let port = 1128;
